@@ -8,8 +8,8 @@ public class PlayerScript : MonoBehaviour {
     public int health = 10;
     private int score;
     public Text Counttext;
+    public Text Healthtext;
     public event Action<PlayerScript> onPlayerDeath;
-
     void OnCollisionEnter(Collision col)
     {
         Enemy enemy = col.gameObject.GetComponent<Enemy>();
@@ -38,13 +38,28 @@ public class PlayerScript : MonoBehaviour {
         DisplayScore();
 
     }
+    public void RefreshScore()
+    {
+        score = 0;
+        DisplayScore();
+    }
     void DisplayScore()
     {
-        Counttext.text = "Count: " + score.ToString();
+        Counttext.text = "Score: " + score.ToString();
     }
+
     // Update is called once per frame
     void Update () {
        
+    }
+    public void RefreshHealth()
+    {
+        health = 10;
+        DisplayHealth();
+    }
+    public void DisplayHealth()
+    {
+        Healthtext.text = "Health: " + health.ToString();
     }
 
     public static implicit operator GameObject(PlayerScript v)
