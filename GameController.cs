@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
     public Spawner enemyProducer;
     public GameObject playerPrefab;
+    public Text Gameover;
     // Use this for initialization
     void Start()
     {
@@ -18,7 +19,7 @@ public class GameController : MonoBehaviour {
     {
         enemyProducer.SpawnEnemies(false);
         //Destroy(player.gameObject);
-        
+        Gameover.text = "Game Over !";
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies)
         {
@@ -29,10 +30,11 @@ public class GameController : MonoBehaviour {
       
     }
     void restartGame()
-    { 
+    {
         //var playerObject = Instantiate(playerPrefab, new Vector3(0, 0.5f, 0), Quaternion.identity) as GameObject;
         //var cameraRig = Camera.main.GetComponent<CameraController>();
         //cameraRig.player = playerObject;
+        Gameover.text = "";
         enemyProducer.SpawnEnemies(true);
         // playerObject.GetComponent<PlayerScript>().onPlayerDeath += onPlayerDeath;
         // playerObject.GetComponent<PlayerScript>().Counttext = GameObject.Find("Counttext").GetComponent<Text>();
