@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour {
     public Spawner enemyProducer;
     public GameObject playerPrefab;
     public Text Gameover;
+    public Text info;
     // Use this for initialization
     void Start()
     {
@@ -20,12 +21,14 @@ public class GameController : MonoBehaviour {
         enemyProducer.SpawnEnemies(false);
         //Destroy(player.gameObject);
         Gameover.text = "Game Over !";
+        info.text="Infinite missiles and a hell lot more of gravity!\nWill you survive?";
+
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (var enemy in enemies)
         {
             Destroy(enemy);
         }
-        Invoke("restartGame",5);
+        Invoke("restartGame",7);
    
       
     }
@@ -35,6 +38,7 @@ public class GameController : MonoBehaviour {
         //var cameraRig = Camera.main.GetComponent<CameraController>();
         //cameraRig.player = playerObject;
         Gameover.text = "";
+        info.text = "";
         enemyProducer.SpawnEnemies(true);
         // playerObject.GetComponent<PlayerScript>().onPlayerDeath += onPlayerDeath;
         // playerObject.GetComponent<PlayerScript>().Counttext = GameObject.Find("Counttext").GetComponent<Text>();
