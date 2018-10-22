@@ -9,6 +9,8 @@ public class PlayerScript : MonoBehaviour {
     private int score;
     public Text Counttext;
     public Text Healthtext;
+    public Text gameover;
+    public Text info;
     public event Action<PlayerScript> onPlayerDeath;
     void OnCollisionEnter(Collision col)
     {
@@ -31,6 +33,8 @@ public class PlayerScript : MonoBehaviour {
     void Start () {
         score = 0;
         DisplayScore();
+        gameover.text = "";
+        info.text = "";
     }
     public void UpdateScore()
     {
@@ -50,7 +54,10 @@ public class PlayerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-       
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
     public void RefreshHealth()
     {
