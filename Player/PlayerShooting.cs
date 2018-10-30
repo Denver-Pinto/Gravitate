@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class PlayerShooting : MonoBehaviour {
+public class PlayerShooting : MonoBehaviour
+{
     // Use this for initialization
     public Projectile projectilePrefab;//the projectile we created
     public LayerMask mask;//to filter the gameObjects
-    void Start () {
-        }
+    void Start()
+    {
+    }
     void shoot(RaycastHit hit)
     {
         // initialize prefab 
@@ -24,7 +26,7 @@ public class PlayerShooting : MonoBehaviour {
     }
     //user click trigger
     void raycastOnMouseClick()
-    { 
+    {
         RaycastHit hit;
         Ray rayToFloor = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(rayToFloor, out hit, 100.0f, mask, QueryTriggerInteraction.Collide))

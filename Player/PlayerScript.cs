@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System;
 
 public class PlayerScript : MonoBehaviour {
-    public int health = 10;
+    public int health = 20;
     private int score;
     public Text Counttext;
     public Text Healthtext;
@@ -47,6 +47,16 @@ public class PlayerScript : MonoBehaviour {
         score = 0;
         DisplayScore();
     }
+    public void checkHealth()
+    {
+        if(health<=0)
+        {
+            if (onPlayerDeath != null)
+            {
+                onPlayerDeath(this);
+            }
+        }
+    }
     void DisplayScore()
     {
         Counttext.text = "Score: " + score.ToString();
@@ -61,7 +71,7 @@ public class PlayerScript : MonoBehaviour {
     }
     public void RefreshHealth()
     {
-        health = 10;
+        health = 20;
         DisplayHealth();
     }
     public void DisplayHealth()
