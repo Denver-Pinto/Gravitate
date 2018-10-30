@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour {
         // playerObject.GetComponent<PlayerScript>().Counttext = GameObject.Find("Counttext").GetComponent<Text>();
         var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         player.onPlayerDeath += onPlayerDeath;
-        player.transform.position = new Vector3(0, 1, 0);
+        player.transform.position = new Vector3(0, 0.5f , 0);
         player.RefreshHealth();
         player.RefreshScore();
     }

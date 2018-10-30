@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour {
         player.health -= this.damage;
         Destroy(this.gameObject);
         player.UpdateScore();
+        player.checkHealth();
         player.DisplayHealth();
     }
     public void Initialize(Transform target, float moveSpeed, int health)
